@@ -9,8 +9,8 @@ const HeaderNav = () => {
   };
 
   return (
-    <nav>
-      <ul style={{ listStyleType: "none", display: "flex" }}>
+    <nav style={{ padding:"2em 0", backgroundColor:"Red"}}>
+      <ul style={{ justifyContent:"center", fontSize:"2em", listStyleType: "none", display: "flex" }}>
         <li>
           <NavLink style={checkIsActive} to="/">
             HOME
