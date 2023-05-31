@@ -19,25 +19,23 @@ const NotFound = () => {
   };
 
   const customButton = {
-    padding:"1.5em",
-    backgroundColor:"#c191a1",
-    margin:"1em"
+    padding: "1.5em",
+    backgroundColor: "#c191a1",
+    margin: "1em",
   };
 
   return (
-    <>
       <div style={customDiv}>
-        <p style={customP}>Cette page n'existe pas !!
-        <br />
-        <button style={customButton}>
-          <NavLink style={{textDecoration: "none", color:"white"}} to="/">
-            Home
+        <p style={customP}>
+          Cette page n'existe pas !!
+          <br />
+          <button style={customButton}>
+            <NavLink style={{ textDecoration: "none", color: "white" }} to="/">
+              Home
             </NavLink>
-        </button>
+          </button>
         </p>
       </div>
-    </>
   );
 };
-
 export default NotFound;

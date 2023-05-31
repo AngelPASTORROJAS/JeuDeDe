@@ -6,13 +6,20 @@ const HeaderNav = () => {
       margin: "10px",
       color: isActive ? "Orange" : "black",
       textDecoration: "none",
-      fontStyle:"bold"
+      fontStyle: "bold",
     };
   };
 
   return (
-    <nav style={{ padding:"2em 0", backgroundColor:"Red"}}>
-      <ul style={{ justifyContent:"center", fontSize:"2em", listStyleType: "none", display: "flex" }}>
+    <nav style={{ padding: "2em 0", backgroundColor: "Red" }}>
+      <ul
+        style={{
+          justifyContent: "center",
+          fontSize: "2em",
+          listStyleType: "none",
+          display: "flex",
+        }}
+      >
         <li>
           <NavLink style={checkIsActive} to="/">
             HOME
