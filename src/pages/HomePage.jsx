@@ -1,10 +1,12 @@
 import { useReducer } from "react";
+import rollDice from "../utils/utils";
 
 const initialState = {
   nbDe: 5,
   nbExperience: 1,
   messageErrorDe: "",
   messageErrorExperience: "",
+  resultat:""
 };
 
 const reducer = (state, action) => {
@@ -27,6 +29,14 @@ const reducer = (state, action) => {
             : "",
         nbExperience: action.value,
       };
+    case "lancer":
+      const res=[]
+      for (let i = 0; i < state.nbExperience; i++) {
+        res.push(rollDice(state.nbDe))
+      }
+      return {
+        ...state, resultat:res.map(e=>"Résultats de l'éxperience : "+e+". ")
+      }
   }
 };
 
@@ -59,10 +69,8 @@ const HomePage = () => {
           value={state.nbExperience}
         />
       </p>
-      <button>lancer</button>
-      <a style={{ textDecoration: "none" }} href="/statistic">
-        <p style={{ color: "white", fontSize: "2em" }}>Resultat</p>
-      </a>
+      <button onClick={ () => dispatch({type:"lancer"})}>lancer</button>
+        <p style={{ color: "white", fontSize: "2em" }}>{state.resultat}</p>
     </>
   );
 };
