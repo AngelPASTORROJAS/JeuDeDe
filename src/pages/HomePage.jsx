@@ -3,13 +3,30 @@ import { useReducer } from "react";
 const initialState = {
   nbDe: 5,
   nbExperience: 1,
+  messageErrorDe: "",
+  messageErrorExperience: "",
 };
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "updateNbDe":
-      return { ...state, nbDe: action.value };
+      return {
+        ...state,
+        messageErrorDe:
+          isNaN(action.value) || action.value < 3
+            ? "Le nombre de dé(s) doit être un entier supérieur à 3."
+            : "",
+        nbDe: action.value,
+      };
     case "updateNbExperience":
-      return { ...state, nbExperience: action.value };
+      return {
+        ...state,
+        messageErrorExperience:
+          isNaN(action.value) || action.value < 1
+            ? "Le nombre d'experience(s) doit être un entier supérieur à 1."
+            : "",
+        nbExperience: action.value,
+      };
   }
 };
 
@@ -18,6 +35,7 @@ const HomePage = () => {
 
   return (
     <>
+      <p style={{ color: "red" }}>{state.messageErrorDe}</p>
       <p style={{ color: "white" }}>
         Nombre de dé(s)
         <input
@@ -29,7 +47,7 @@ const HomePage = () => {
           min="3"
         />
       </p>
-      <p style={{ color: "white" }}>{state.nbDe}</p>
+      <p style={{ color: "red" }}>{state.messageErrorExperience}</p>
       <p style={{ color: "white" }}>
         Nombre d'expérience(s)
         <input
@@ -41,7 +59,6 @@ const HomePage = () => {
           value={state.nbExperience}
         />
       </p>
-      <p style={{ color: "white" }}>{state.nbExperience}</p>
       <button>lancer</button>
       <a style={{ textDecoration: "none" }} href="/statistic">
         <p style={{ color: "white", fontSize: "2em" }}>Resultat</p>
