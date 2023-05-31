@@ -1,67 +1,45 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import DescriptionPage from "./pages/DescriptionPage";
 import StatisticPage from "./pages/StatisticPage";
-import HeaderNav from "./component/HeaderNav";
+import Layout from "./component/Layout";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <Layout>
+          <HomePage />
+        </Layout>
+      ),
+    },
+    {
+      path: "/description",
+      element: (
+        <Layout>
+          <DescriptionPage />
+        </Layout>
+      ),
+    },
+    {
+      path: "/statistic",
+      element: (
+        <Layout>
+          <StatisticPage />
+        </Layout>
+      ),
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div
-                style={{
-                  padding: "1em",
-                  backgroundColor: "#0d0c1c",
-                  width: "100vw",
-                  height: "100vh",
-                }}
-              >
-                <HeaderNav />
-                <HomePage />
-              </div>
-            }
-          />
-          <Route
-            path="/description"
-            element={
-              <div
-                style={{
-                  padding: "1em",
-                  backgroundColor: "#0d0c1c",
-                  width: "100vw",
-                  height: "100vh",
-                }}
-              >
-                <HeaderNav />
-                <DescriptionPage />
-              </div>
-            }
-          />
-          <Route
-            path="/statistic"
-            element={
-              <div
-                style={{
-                  padding: "1em",
-                  backgroundColor: "#0d0c1c",
-                  width: "100vw",
-                  height: "100vh",
-                }}
-              >
-                <HeaderNav />
-                <StatisticPage />
-              </div>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 }
