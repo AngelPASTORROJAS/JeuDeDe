@@ -4,7 +4,9 @@ const HeaderNav = () => {
     return {
       display: "block",
       margin: "10px",
-      color: isActive ? "green" : "black",
+      color: isActive ? "Orange" : "black",
+      textDecoration: "none",
+      fontStyle:"bold"
     };
   };
 
