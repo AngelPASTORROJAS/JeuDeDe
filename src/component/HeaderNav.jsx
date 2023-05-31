@@ -1,0 +1,28 @@
+import { NavLink } from "react-router-dom";
+const HeaderNav = () => {
+  const checkIsActive = ({ isActive }) => {
+    return {
+      display: "block",
+      margin: "10px",
+      color: isActive ? "green" : "black",
+    };
+  };
+
+  return (
+    <nav>
+      <ul style={{ listStyleType: "none", display: "flex" }}>
+        <li>
+          <NavLink style={checkIsActive} to="/">
+            HOME
+          </NavLink>
+        </li>
+        <li>
+          <NavLink style={checkIsActive} to="/description">
+            DESCRIPTION
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+export default HeaderNav;
