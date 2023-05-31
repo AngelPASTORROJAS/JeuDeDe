@@ -20,6 +20,7 @@ const NotFound = () => {
 
   const customButton = {
     padding:"1.5em",
+    backgroundColor:"#c191a1",
     margin:"1em"
   };
 
@@ -29,7 +30,7 @@ const NotFound = () => {
         <p style={customP}>Cette page n'existe pas !!
         <br />
         <button style={customButton}>
-          <NavLink to="/">
+          <NavLink style={{textDecoration: "none", color:"white"}} to="/">
             Home
             </NavLink>
         </button>
