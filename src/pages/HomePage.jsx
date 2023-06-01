@@ -35,7 +35,7 @@ const reducer = (state, action) => {
         res.push(rollDice(state.nbDe))
       }
       return {
-        ...state, resultat:res.map(e=>"Résultats de l'éxperience : "+e+". ")
+        ...state, resultat:res.map(e=><p style={{ color: "white", fontSize: "2em" }}>Résultats de l'éxperience : {e.join(", ")}</p>)
       }
   }
 };
@@ -70,7 +70,7 @@ const HomePage = () => {
         />
       </p>
       <button onClick={ () => dispatch({type:"lancer"})}>lancer</button>
-        <p style={{ color: "white", fontSize: "2em" }}>{state.resultat}</p>
+      {state.resultat}
     </>
   );
 };
